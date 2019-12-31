@@ -2,11 +2,16 @@ package me.dgpark.springdataredis;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.dgpark.springdataredis.dto.request.AccountCreateRequest;
+import me.dgpark.springdataredis.dto.request.AccountUpdateRequest;
+import me.dgpark.springdataredis.dto.response.AccountCreateResponse;
+import me.dgpark.springdataredis.dto.response.AccountDetailResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -47,6 +52,21 @@ public class AccountController {
 
         log.info("===== accountDetail end =====");
         return ResponseEntity.ok(accountDetailResponse);
+    }
+
+    @Transactional
+    @PostMapping("account")
+    public ResponseEntity accountCreate(@RequestBody AccountCreateRequest request) {
+        Account account = Account.createEntity(
+                request.getUsername(),
+                request.getEmail()
+        );
+
+        Account save = accountRepository.save(account);
+
+        AccountCreateResponse accountCreateResponse = new AccountCreateResponse(save.getId());
+
+        return ResponseEntity.ok(accountCreateResponse);
     }
 
     @Transactional

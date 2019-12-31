@@ -1,14 +1,16 @@
-package me.dgpark.springdataredis;
+package me.dgpark.springdataredis.dto.request;
 
 import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
 
 @Data
 public class AccountUpdateRequest {
 
-    private Long id;
-
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     private String email;
 
 }

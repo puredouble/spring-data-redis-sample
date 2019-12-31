@@ -1,8 +1,9 @@
-package me.dgpark.springdataredis;
+package me.dgpark.springdataredis.dto.response;
 
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.dgpark.springdataredis.Account;
 import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Id;
@@ -11,7 +12,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class AccountDetailResponse {
 
-    @Id
     private Long id;
 
     private String username;

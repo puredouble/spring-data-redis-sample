@@ -1,6 +1,7 @@
 package me.dgpark.springdataredis;
 
 import lombok.Getter;
+import me.dgpark.springdataredis.dto.response.AccountDetailResponse;
 import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Id;

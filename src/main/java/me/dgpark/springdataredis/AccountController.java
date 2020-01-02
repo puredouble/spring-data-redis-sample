@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -46,6 +45,7 @@ public class AccountController {
         Account account = optionalAccount.get();
 
         AccountDetailResponse accountDetailResponse = new AccountDetailResponse(account);
+
 
         AccountDetailCache accountDetailCache = new AccountDetailCache(id, accountDetailResponse);
         accountDetailCacheRepository.save(accountDetailCache);

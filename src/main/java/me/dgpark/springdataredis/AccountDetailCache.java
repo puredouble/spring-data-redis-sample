@@ -6,7 +6,8 @@ import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.Id;
 
-@RedisHash("accountDetail")
+// timeToLive : sec
+@RedisHash(value = "accountDetail", timeToLive = 10)
 @Getter
 public class AccountDetailCache {
 
